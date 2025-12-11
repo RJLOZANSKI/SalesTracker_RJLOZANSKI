@@ -20,5 +20,5 @@ public class Deal
     public DateTime CloseDate { get; set; }
 
     public int SalesRepID { get; set; }
-    public SalesRep? SalesRep { get; set; } = default!;
+    public SalesRep SalesRep { get; set; } = default!;
 }

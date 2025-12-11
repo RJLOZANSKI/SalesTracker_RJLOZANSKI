@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SalesTracker_RJLOZANSKI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6c461a55232f20fe7fd0c463aa71b32d55ab356")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a5f53172d88781445e1f94656af03dabaeb7014")]
 [assembly: System.Reflection.AssemblyProductAttribute("SalesTracker_RJLOZANSKI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SalesTracker_RJLOZANSKI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
