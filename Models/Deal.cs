@@ -6,8 +6,10 @@ public class Deal
 {
     public int DealID { get; set; }
 
+    [StringLength(100, MinimumLength = 3)]
     public string CustomerName { get; set; } = string.Empty;
 
+    [StringLength(30, MinimumLength = 3)]
     public string ProductType { get; set; } = string.Empty;
 
     public decimal DealValue { get; set; }
