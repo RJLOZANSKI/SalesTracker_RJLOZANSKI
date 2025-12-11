@@ -27,7 +27,9 @@ namespace SalesTracker_RJLOZANSKI.Pages_Deals
                 return NotFound();
             }
 
-            var deal = await _context.Deals.FirstOrDefaultAsync(m => m.DealID == id);
+            var deal = await _context.Deals
+                .Include(d => d.SalesRep)
+                .FirstOrDefaultAsync(m => m.DealID == id);
 
             if (deal is not null)
             {

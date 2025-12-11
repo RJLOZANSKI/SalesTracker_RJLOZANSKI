@@ -35,7 +35,7 @@ namespace SalesTracker_RJLOZANSKI.Pages_Deals
                 return NotFound();
             }
             Deal = deal;
-           ViewData["SalesRepID"] = new SelectList(_context.SalesReps, "SalesRepID", "SalesRepID");
+           ViewData["SalesRepID"] = new SelectList(_context.SalesReps, "SalesRepID", "FullName");
             return Page();
         }
 

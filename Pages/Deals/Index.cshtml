@@ -10,26 +10,65 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<div class="row">
+    <form class="d-flex" role="search" asp-page="./Index" method="get">
+        <div class="col-3">
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input class="form-control me-2" type="search" name="CurrentSearch" value="@Model.CurrentSearch" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
 <table class="table">
-    <thead>
+    <thead style="border-bottom: 2px solid;">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Deal[0].CustomerName)
+            @{
+                var firstSort ="first_asc";
+                if (Model.CurrentSort == "first_asc")
+                {
+                    firstSort = "first_desc";
+                }
+            }
+            <a asp-page="./Index" asp-route-CurrentSort="@firstSort" asp-route-PageNum="@Model.PageNum">@Html.DisplayNameFor(model => model.Deal[0].CustomerName)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Deal[0].ProductType)
+            @{
+                var secondSort ="second_asc";
+                if (Model.CurrentSort == "second_asc")
+                {
+                    secondSort = "second_desc";
+                }
+            }
+            <a asp-page="./Index" asp-route-CurrentSort="@secondSort" asp-route-PageNum="@Model.PageNum">@Html.DisplayNameFor(model => model.Deal[0].ProductType)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Deal[0].DealValue)
+            @Html.DisplayNameFor(model => model.Deal[0].DealValue)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Deal[0].Status)
+            @{
+                var thirdSort ="third_asc";
+                if (Model.CurrentSort == "third_asc")
+                {
+                    thirdSort = "third_desc";
+                }
+            }
+            <a asp-page="./Index" asp-route-CurrentSort="@thirdSort" asp-route-PageNum="@Model.PageNum">@Html.DisplayNameFor(model => model.Deal[0].Status)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Deal[0].CloseDate)
+            @{
+                var fourthSort ="fourth_asc";
+                if (Model.CurrentSort == "fourth_asc")
+                {
+                    fourthSort = "fourth_desc";
+                }
+            }
+            <a asp-page="./Index" asp-route-CurrentSort="@fourthSort" asp-route-PageNum="@Model.PageNum">@Html.DisplayNameFor(model => model.Deal[0].CloseDate)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Deal[0].SalesRep)
+                @Html.DisplayNameFor(model => model.Deal[0].SalesRep.FullName)
             </th>
             <th></th>
         </tr>
@@ -53,7 +92,7 @@
                 @Html.DisplayFor(modelItem => item.CloseDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SalesRep.SalesRepID)
+                @Html.DisplayFor(modelItem => item.SalesRep.FullName)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.DealID">Edit</a> |
@@ -64,3 +103,24 @@
 }
     </tbody>
 </table>
+
+@{
+    // If we are on page 1, prevDisabled will be set to the "disabled" class
+    // otherwise, it will be empty. So our previous button will be enabled or disabled based on this logic
+    var prevDisabled = "";
+    var nextDisabled = "";
+    if (Model.PageNum <= 1)
+    {
+        prevDisabled = "disabled";
+    }
+    if (Model.PageNum >= Model.TotalPages)
+    {
+        nextDisabled = "disabled";
+    }
+}
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item @prevDisabled"><a class="page-link" asp-page="./Index" asp-route-CurrentSort="@Model.CurrentSort" asp-route-PageNum="@(Model.PageNum - 1)">Previous</a></li>
+        <li class="page-item @nextDisabled"><a class="page-link" asp-page="./Index" asp-route-CurrentSort="@Model.CurrentSort" asp-route-PageNum="@(Model.PageNum + 1)">Next</a></li>
+    </ul>
+</nav>

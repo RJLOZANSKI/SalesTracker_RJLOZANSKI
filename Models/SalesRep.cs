@@ -10,6 +10,8 @@ public class SalesRep
 
     public string LastName { get; set; } = string.Empty;
 
+    public string FullName => FirstName + " " + LastName;
+
     public string Territory { get; set; } = string.Empty;
 
     [DataType(DataType.Date)]
