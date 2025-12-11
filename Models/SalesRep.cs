@@ -17,6 +17,7 @@ public class SalesRep
     [DataType(DataType.Date)]
     public DateTime HireDate { get; set; }
 
+    [DataType(DataType.Currency)]
     public decimal MonthQuota { get; set; }
 
     public ICollection<Deal>? Deals { get; set; } = new List<Deal>();  

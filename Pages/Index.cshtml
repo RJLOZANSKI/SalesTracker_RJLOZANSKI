@@ -4,7 +4,82 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h1>Starfleet Strategic Operations Deal Tracker</h1>
+            <p>Monitor Federation-wide sales initiatives and mission-critical opportunities from one centralized command console. Use this dashboard to review live deal activity and keep track of your Starfleet sales performance.</p>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Deals</h5>
+                    <p class="card-text display-4">@Model.TotalDeals</p>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Sales Reps</h5>
+                    <p class="card-text display-4">@Model.TotalSalesReps</p>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Deal Value Won</h5>
+                    <p class="card-text display-4">@Model.TotalDealWonValue.ToString("C")</p>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Open Deals</h5>
+                    <p class="card-text display-4">@Model.OpenDeals</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col mb-3">
+            <h2>Top 5 Deals Won</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Product Type</th>
+                        <th>Deal Value</th>
+                        <th>Close Date</th>
+                        <th>Sales Rep</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @if (Model.TopDeals.Count > 0)
+                {
+                    foreach (var deal in Model.TopDeals)
+                    {
+                        <tr>
+                            <td>@deal.CustomerName</td>
+                            <td>@deal.ProductType</td>
+                            <td>@deal.DealValue.ToString("C")</td>
+                            <td>@deal.CloseDate.ToShortDateString()</td>
+                            <td>@deal.SalesRep.FullName</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5">No deals found.</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

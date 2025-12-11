@@ -12,8 +12,12 @@ public class Deal
     [StringLength(30, MinimumLength = 3)]
     public string ProductType { get; set; } = string.Empty;
 
+    [Required]
+    [DataType(DataType.Currency)]
     public decimal DealValue { get; set; }
 
+    [Required]
+    [AllowedValues("won", "lost", "open")]
     public string Status { get; set; } = string.Empty;
 
     [DataType(DataType.Date)]
