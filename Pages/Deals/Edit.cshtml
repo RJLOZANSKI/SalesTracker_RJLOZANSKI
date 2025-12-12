@@ -15,41 +15,36 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Deal.DealID" />
             <div class="form-group">
-                
                 <label asp-for="Deal.CustomerName" class="control-label"></label>
                 <input asp-for="Deal.CustomerName" class="form-control" />
                 <span asp-validation-for="Deal.CustomerName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                
                 <label asp-for="Deal.ProductType" class="control-label"></label>
                 <input asp-for="Deal.ProductType" class="form-control" />
                 <span asp-validation-for="Deal.ProductType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                
                 <label asp-for="Deal.DealValue" class="control-label"></label>
                 <input asp-for="Deal.DealValue" class="form-control" />
                 <span asp-validation-for="Deal.DealValue" class="text-danger"></span>
             </div>
             <div class="form-group">
-                
                 <label asp-for="Deal.Status" class="control-label"></label>
                 <input asp-for="Deal.Status" class="form-control" />
                 <span asp-validation-for="Deal.Status" class="text-danger"></span>
             </div>
             <div class="form-group">
-                
                 <label asp-for="Deal.CloseDate" class="control-label"></label>
                 <input asp-for="Deal.CloseDate" class="form-control" />
                 <span asp-validation-for="Deal.CloseDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                
                 <label asp-for="Deal.SalesRepID" class="control-label"></label>
                 <select asp-for="Deal.SalesRepID" class="form-control" asp-items="ViewBag.SalesRepID"></select>
                 <span asp-validation-for="Deal.SalesRepID" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

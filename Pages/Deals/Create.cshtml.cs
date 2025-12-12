@@ -20,7 +20,7 @@ namespace SalesTracker_RJLOZANSKI.Pages_Deals
 
         public IActionResult OnGet()
         {
-        ViewData["SalesRepID"] = new SelectList(_context.SalesReps, "SalesRepID", "FullName");
+            ViewData["SalesRepID"] = new SelectList(_context.SalesReps, "SalesRepID", "FullName");
             return Page();
         }
 
@@ -32,6 +32,7 @@ namespace SalesTracker_RJLOZANSKI.Pages_Deals
         {
             if (!ModelState.IsValid)
             {
+                ViewData["SalesRepID"] = new SelectList(_context.SalesReps, "SalesRepID", "FullName");
                 return Page();
             }
 
